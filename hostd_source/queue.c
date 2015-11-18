@@ -12,6 +12,34 @@
 // Define your FIFO queue functions here, these will most likely be the
 // push and pop functions that you declared in your header file
 
+void push (proc process) {
+  // If head is empty, initialize that instead
+  if(head == NULL){
+    head = malloc(sizeof(node_t));
+    head->p = process;
+    head->next = NULL;
+  } else {  // Else go to the end of the list and add a new node there
+    // Add a new node to the end
+    node_t *current = head;
+    // Get to the end of the list
+    while (current->next != NULL) {
+      current = current->next;
+    }
+    current->next = malloc(sizeof(node_t));
+    current->next->p = process;
+    current->next->next = NULL;
+  }
+
+}
+
+proc pop(){
+  proc p = head->p;
+  node_t *temp_node = head->next;
+  free(head);
+  head = temp_node;
+  return p;
+}
+
 // node_t *push(node_t *tail, proc process);
 // {
 //      ...
