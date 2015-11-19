@@ -26,26 +26,28 @@
 
 int main(int argc, char *argv[]) {
 
-  if(argc < 2){    
-    return 1;
+  if(argc < 2){
+    printf("No file name provided! Please provide a file to read the process list from.\n");
+    return EXIT_SUCCESS;
   }
 
-    // ==================== YOUR CODE HERE ==================== //
+  // ==================== YOUR CODE HERE ==================== //
+  // Load the dispatch list from the file
+  node_t *dispatch_queue;
+  load_dispatch(argv[1], dispatch_queue);
 
-    // Load the dispatch list from the file
+  // Add each process structure instance to the job dispatch list queue
 
-    // Add each process structure instance to the job dispatch list queue
+  // Iterate through each item in the job dispatch list, add each process
+  // to the appropriate queues
 
-    // Iterate through each item in the job dispatch list, add each process
-    // to the appropriate queues
+  // Allocate the resources for each process before it's executed
 
-    // Allocate the resources for each process before it's executed
+  // Execute the process binary using fork and exec
 
-    // Execute the process binary using fork and exec
+  // Perform the appropriate signal handling / resource allocation and de-alloaction
 
-    // Perform the appropriate signal handling / resource allocation and de-alloaction
-
-    // Repeat until all processes have been executed, all queues are empty
+  // Repeat until all processes have been executed, all queues are empty
 
     return EXIT_SUCCESS;
 }

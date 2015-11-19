@@ -21,7 +21,7 @@ typedef struct{
 } proc;
 
 typedef struct queue{
-  proc process;
+  proc p;
   struct queue *next;
 } node_t;
 

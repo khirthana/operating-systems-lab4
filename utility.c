@@ -25,5 +25,5 @@ void free_mem(resources res, int index, int size){
 }
 
 void load_dispatch(char *dispatch_file, node_t *queue){
-  
+  // Read the file here and load it into the queue
 }
