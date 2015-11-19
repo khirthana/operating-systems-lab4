@@ -36,6 +36,10 @@ int main(int argc, char *argv[]) {
   node_t *dispatch_queue;
   load_dispatch(argv[1], dispatch_queue);
 
+    // ==================== YOUR CODE HERE ==================== //
+
+    // Load the dispatch list from the file
+
   // Add each process structure instance to the job dispatch list queue
 
   // Iterate through each item in the job dispatch list, add each process
