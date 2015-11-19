@@ -8,11 +8,21 @@
 #ifndef QUEUE_H_
 #define QUEUE_H_
 
-#include "utility.h"
 
-typedef queue{
+typedef struct{
+   int arrival_time;
+   int priority;
+   int processor_time;
+   int mbytes;
+   int printers;
+   int scanners;
+   int modems;
+   int cds;
+} proc;
+
+typedef struct queue{
   proc process;
-  
+  struct queue *next;
 } node_t;
 
 // Include your relevant FIFO queue functions declarations here they must start
@@ -21,9 +31,9 @@ typedef queue{
 // Add a new process to the queue, returns the address of the next node added
 // to the linked list
 
-extern node_t *push(node_t *tail, proc process);
+extern node_t *push(proc process);
 
-extern node_t *pop(node_t *tail);
+extern node_t *pop();
 
 
 #endif /* QUEUE_H_ */

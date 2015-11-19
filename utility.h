@@ -8,6 +8,7 @@
 #ifndef UTILITY_H_
 #define UTILITY_H_
 
+#include "queue.h"
 // The amount of available memory
 #define MEMORY 1024
 
@@ -17,14 +18,6 @@ typedef struct {
 
 
 } resources;
-
-
-// Processes structure containing all of the process details parsed from the
-// input file, should also include the memory address (an index) which indicates
-// where in the resources memory array its memory was allocated
-typedef struct {
-
-} process;
 
 
 // Include your relevant functions declarations here they must start with the
@@ -38,7 +31,7 @@ extern int alloc_mem(resources res, int size);
 // Function to free the allocated contiguous chunk of memory in your resources
 // structure memory array, should take the resource struct, start index, and
 // size (amount of memory allocated) as arguments
-extern free_mem(resources res, int index, int size);
+extern void free_mem(resources res, int index, int size);
 
 // Function to parse the file and initialize each process structure and add
 // it to your job dispatch list queue (linked list)

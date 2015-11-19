@@ -12,12 +12,10 @@
 // Define your FIFO queue functions here, these will most likely be the
 // push and pop functions that you declared in your header file
 
-node_t *push(node_t *tail, proc process);
-{
+node_t *push(node_t *tail, proc process){
   // push the process into the queue
 }
 
-node_t *pop(node_t *tail);
-{
+node_t *pop(node_t *tail){
   // pop a process from the queue
 }
