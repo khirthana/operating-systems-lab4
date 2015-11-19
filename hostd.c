@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2015, <GROUP MEMBERS>
  * All rights reserved.
- * 
+ *
  */
 #include <stddef.h>
 #include <stdlib.h>
@@ -24,12 +24,12 @@
 
 // Define functions declared in hostd.h here
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
+
     // ==================== YOUR CODE HERE ==================== //
-    
-    // Load the dispatchlist
-    
+
+    // Load the dispatch list from the file
+
     // Add each process structure instance to the job dispatch list queue
 
     // Iterate through each item in the job dispatch list, add each process
@@ -42,6 +42,6 @@ int main(int argc, char *argv[])
     // Perform the appropriate signal handling / resource allocation and de-alloaction
 
     // Repeat until all processes have been executed, all queues are empty
-     
+
     return EXIT_SUCCESS;
 }
