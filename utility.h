@@ -11,12 +11,28 @@
 #include "queue.h"
 // The amount of available memory
 #define MEMORY 1024
+#define BUFFER_LEN 256
+
+// Process structure that contains all info related to the process
+typedef struct{
+   int arrival_time;
+   int priority;
+   int processor_time;
+   int printers;
+   int scanners;
+   int modems;
+   int cds;
+   int mbytes;
+} proc;
 
 // Resources structure containing integers for each resource constraint and an
 // array of 1024 for the memory
 typedef struct {
-
-
+  int mbytes[MEMORY];
+  int printers;
+  int scanners;
+  int modems;
+  int cds;
 } resources;
 
 

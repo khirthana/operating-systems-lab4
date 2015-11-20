@@ -9,16 +9,7 @@
 #define QUEUE_H_
 
 
-typedef struct{
-   int arrival_time;
-   int priority;
-   int processor_time;
-   int mbytes;
-   int printers;
-   int scanners;
-   int modems;
-   int cds;
-} proc;
+#include "utility.h"
 
 typedef struct queue{
   proc p;
@@ -31,9 +22,9 @@ typedef struct queue{
 // Add a new process to the queue, returns the address of the next node added
 // to the linked list
 
-extern node_t *push(proc process);
+extern node_t *push(node_t *head, proc process);
 
-extern node_t *pop();
+extern node_t *pop(node_t *head);
 
 
 #endif /* QUEUE_H_ */

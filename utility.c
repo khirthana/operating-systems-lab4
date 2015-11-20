@@ -16,27 +16,6 @@
 // Define your utility functions here, you will likely need to add more...
 
 
-void tokenize (char *input, char **tokens){
-  const char delim[2] = ",";
-  int i = 0;
-  char *token = {0};
-
-  char *newline = strchr (input, '\n');
-
-  while (newline){
-    *newline = 0;
-    token = strtok(input,delim);
-    newline = strchr(input, '\n');
-  }
-
-  while(token != NULL){
-    tokens [i] = token;
-    token = strtok (NULL, delim);
-    i++;
-  }
-}
-
-
 int alloc_mem(resources res, int size){
 
 }
@@ -46,30 +25,51 @@ void free_mem(resources res, int index, int size){
 }
 
 void load_dispatch(char *dispatch_file, node_t *queue){
-<<<<<<< HEAD
+
+  char process_data[BUFFER_LEN] = { 0 };
+  // The 2D Array that will hold the tokens from the file read
+  char * tokens[BUFFER_LEN] = { 0 };
+  FILE *fp = fopen(dispatch_file);
+
   // Read the file here and load it into the queue
-=======
-
-    FILE *fp = fopen (dispatch_file,"r");
-    char *tokens[BUFFER_LEN];
-    char buffer[BUFFER_LEN];
-
-    while(fgets(buffer, BUFFER_LEN, fp)!= NULL){
-      tokenize(buffer, tokens);
+  if (fp != NULL){
+    while(fgets(process_data, BUFFER_LEN, fp) != NULL){
+      tokenize(process, tokens);
       proc process;
-      process.arrival_time = atoi(tokens[0]);
-      process.priority = atoi(tokens[1]);
-      process.processor_time = atoi(tokens[2]);
-      process.mbytes = atoi(tokens[3]);
-      process.printers = atoi(tokens[4]);
-      process.scanners = atoi(tokens[5]);
-      process.modems = atoi(tokens[6]);
-      process.cds = atoi(tokens[7]);
+      process.arrival_time = tokens[0];
+      process.processor_time = tokens[1];
+      process.priority = tokens[2];
+      process.mbytes = tokens[3];
+      process.printers = tokens[4];
+      process.scanners = tokens[5];
+      process.modems = tokens[6];
+      process.cds = tokens[7];
 
-      push(process);
+      // Push the process into the queue
+      push(queue, process);
+
     }
+  }
 
-  // Read from the file provided by user
-  // Load each process into the queue
->>>>>>> 4ac38155e7157df5458f1b5815ed15bb233d61e0
+  fclose(fp);
+}
+
+void tokenize(char *input, char **tokens){
+
+  char delim[2] = ",";
+  int i = 0;
+  char *token = { 0 };
+  // Get rid of any newline characters
+  char *newline = strchr( input, '\n' );
+  while ( newline ){
+    *newline = 0;
+    newline = strchr( input, '\n' );
+  }
+  // get tokens
+  token = strtok(input, delim); // Get the first token
+  while (token != NULL) {
+    tokens[i] = token;
+    token = strtok(NULL, delim); // Get next token
+    i++;
+  }
 }
