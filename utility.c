@@ -16,7 +16,7 @@
 // Define your utility functions here, you will likely need to add more...
 
 
-int alloc_mem(resources res, int size){
+extern int alloc_mem(resources res, int size){
   int index;
 
   //checks the array to find consecutive empty spots in array to allocate memory
@@ -43,24 +43,24 @@ int alloc_mem(resources res, int size){
   return index;
 }
 
-void free_mem(resources res, int index, int size){
+extern void free_mem(resources res, int index, int size){
   //free memory from array
   for(int i=index;i<size;i++){
     res.mbytes[i]=1;
   }
 }
 
-void load_dispatch(char *dispatch_file, node_t *queue){
+extern void load_dispatch(char *dispatch_file, node_t *queue){
 
   char process_data[BUFFER_LEN] = { 0 };
   // The 2D Array that will hold the tokens from the file read
   char * tokens[BUFFER_LEN] = { 0 };
-  FILE *fp = fopen(dispatch_file);
+  FILE *fp = fopen(dispatch_file,'r');
 
   // Read the file here and load it into the queue
   if (fp != NULL){
     while(fgets(process_data, BUFFER_LEN, fp) != NULL){
-      tokenize(process, tokens);
+      tokenize(process_data, tokens);
       proc process;
       process.arrival_time = tokens[0];
       process.processor_time = tokens[1];
