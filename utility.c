@@ -17,11 +17,37 @@
 
 
 int alloc_mem(resources res, int size){
+  int index;
 
+  //checks the array to find consecutive empty spots in array to allocate memory
+  for(int j=0;j<MEMORY;j++){
+    if(res.mbytes[j]==0){
+        index=j;
+        for(int k=index;k<size;k++){
+            if(res.mbytes[k]==0){
+              j=MEMORY;
+            }
+            else{
+              j=k;
+              k=size;
+            }
+        }
+      }
+    }
+
+    //allocate memory in array for required size
+    for(int i=index;i<size;i++){
+      res.mbytes[i]=1;
+    }
+
+  return index;
 }
 
 void free_mem(resources res, int index, int size){
-
+  //free memory from array
+  for(int i=index;i<size;i++){
+    res.mbytes[i]=1;
+  }
 }
 
 void load_dispatch(char *dispatch_file, node_t *queue){
